@@ -6,10 +6,20 @@ const { generatePlan } = require("./taxEngine");
 // ========== APP CONFIG ==========
 const app = express();
 const PORT = process.env.PORT || 3000;
+const FRONTEND_DIR = path.join(__dirname, "../frontend");
 
 app.use(cors());
 app.use(express.json({ limit: "32kb" }));
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(FRONTEND_DIR));
+
+// ========== FRONTEND ROUTES ==========
+app.get("/", (req, res) => {
+  res.sendFile(path.join(FRONTEND_DIR, "index.html"));
+});
+
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(FRONTEND_DIR, "dashboard.html"));
+});
 
 // ========== HEALTH ROUTES ==========
 app.get("/api/health", (req, res) => {
@@ -67,7 +77,7 @@ app.use((err, req, res, next) => {
 // ========== SERVER BOOT ==========
 if (require.main === module) {
   const server = app.listen(PORT, () => {
-    console.log(`Money OS API running at http://localhost:${PORT}`);
+    console.log(`Money OS server running on port ${PORT}`);
   });
 
   server.on("error", (error) => {
