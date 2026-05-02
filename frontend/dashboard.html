@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money OS Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="dashboard-body">
+    <!-- ========== BACKGROUND DECOR ========== -->
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <header class="site-nav">
+      <a class="brand" href="index.html" aria-label="Money OS home">
+        <span class="brand-mark">₹</span>
+        <span>Money OS</span>
+      </a>
+      <nav class="nav-links" aria-label="Dashboard navigation">
+        <a class="nav-pill" href="index.html#planner">Use real inputs</a>
+        <!-- <button class="nav-pill button-reset demo-nav-button" id="demoPlanButton">Load demo data</button> -->
+      </nav>
+    </header>
+
+    <!-- ========== DASHBOARD CONTENT ========== -->
+    <main class="dashboard shell">
+      <section class="dashboard-hero">
+        <div>
+          <span class="eyebrow">Executive dashboard</span>
+          <h1>Your tax-saving command center</h1>
+          <p id="modelScope">Run a plan from the input page to see your personalized dashboard.</p>
+        </div>
+        <div class="hero-actions compact-actions">
+          <button class="button ghost" id="exportPlanButton" type="button">Export brief</button>
+          <button class="button demo-button" id="heroDemoButton" type="button">Load demo data</button>
+          <a class="button primary" href="index.html#planner">Generate real plan</a>
+        </div>
+      </section>
+
+      <section class="dashboard-skeleton hidden" id="dashboardSkeleton" aria-label="Loading dashboard">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </section>
+
+      <section class="empty-state glass-card" id="emptyState">
+        <h2>Choose how you'd like to explore Money OS</h2>
+        <p>Start with demo mode or generate your personalized tax plan.</p>
+        <div class="mode-choice-grid">
+          <button class="mode-choice-card demo-mode" id="emptyDemoButton" type="button">
+            <span>DEMO MODE</span>
+            <strong>Instant guided preview</strong>
+            <small>Explore Money OS in seconds.</small>
+          </button>
+          <a class="mode-choice-card real-mode" href="index.html#planner">
+            <span>REAL PLAN</span>
+            <strong>Use your salary & goals</strong>
+            <small>Generate your personalized strategy.</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="dashboard-grid hidden" id="dashboardContent">
+        <!-- ========== SCENARIO SIMULATOR ========== -->
+        <article class="panel glass-card scenario-panel full-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Scenario simulator</span>
+              <h2>Stress-test your next life move</h2>
+              <p id="activeScenario">Current plan baseline. Try a life event to recalculate strategy instantly.</p>
+            </div>
+            <button class="button ghost compact-button hidden" id="resetScenarioButton" type="button">Reset baseline</button>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid">
+            <button class="scenario-chip" type="button" data-scenario="salary-hike">
+              <strong>Salary Hike +10%</strong>
+              <span>Higher income, same lifestyle</span>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="bonus">
+              <strong>Bonus ₹2L</strong>
+              <span>One-time annual upside</span>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="home-loan">
+              <strong>Home Loan EMI</strong>
+              <span>₹40K monthly EMI pressure</span>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="parents-insurance">
+              <strong>Parents Insurance</strong>
+              <span>Extra 80D protection layer</span>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="child-goal">
+              <strong>Child Goal</strong>
+              <span>15K/month planning mode</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- ========== TOP METRICS ========== -->
+        <article class="metric-card glass-card">
+          <span>Old Regime Tax</span>
+          <strong id="oldTax">₹0</strong>
+          <p id="oldTaxable">Taxable income ₹0</p>
+        </article>
+        <article class="metric-card glass-card">
+          <span>New Regime Tax</span>
+          <strong id="newTax">₹0</strong>
+          <p id="newTaxable">Taxable income ₹0</p>
+        </article>
+        <article class="metric-card accent-card">
+          <span>Recommended Regime</span>
+          <strong id="betterRegime">Auto</strong>
+          <p id="selectedRegime">Selected by lowest total tax</p>
+        </article>
+        <article class="metric-card glass-card">
+          <span>Savings Difference</span>
+          <strong id="savingsDifference">₹0</strong>
+          <p>Annual post-tax delta</p>
+        </article>
+
+        <!-- ========== CASH STRESS METER ========== -->
+        <article class="panel accent-card wide-panel cash-stress-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Differentiator</span>
+              <h2>Cash Stress Meter</h2>
+            </div>
+            <strong id="cashStressLabel">Low stress</strong>
+          </div>
+          <div class="stress-layout">
+            <div class="stress-ring" id="cashStressRing">
+              <span id="cashStressScore">0</span>
+            </div>
+            <div>
+              <p id="cashStressSummary">Monthly liquidity health appears here.</p>
+              <div class="pressure-list" id="pressureList"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel glass-card wide-panel story-panel">
+          <span class="eyebrow">AI coach</span>
+          <h2 id="storyHeadline">Your financial guidance</h2>
+          <p id="storyBody">Money OS converts slabs, deductions and cash flow into concise next steps.</p>
+          <div class="coach-list" id="coachList"></div>
+        </article>
+
+        <!-- ========== DEADLINE PRESSURE METER ========== -->
+        <article class="panel glass-card wide-panel deadline-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Deadline pressure</span>
+              <h2>Are you on track before March?</h2>
+            </div>
+            <strong id="deadlineRisk">Comfortable</strong>
+          </div>
+          <div class="deadline-meter">
+            <div class="deadline-copy">
+              <span id="deadlineTimeline">April → March</span>
+              <strong id="deadlineCatchUp">₹0/month</strong>
+              <p id="deadlineRecommendation">Monthly catch-up recommendation appears here.</p>
+            </div>
+            <div class="deadline-progress" aria-label="Deadline pressure progress">
+              <i id="deadlineProgressBar"></i>
+            </div>
+            <div class="deadline-stats">
+              <span id="deadlineMonths">0 months left</span>
+              <span id="deadlineRemaining">₹0 opportunity</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ========== SCENARIO SIMULATOR ========== -->
+        <article class="panel glass-card wide-panel scenario-panel hidden" aria-hidden="true">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Scenario simulator</span>
+              <h2>Stress-test life changes</h2>
+              <p>Base plan active. Try a scenario to recalculate instantly.</p>
+            </div>
+            <button class="button ghost compact-button" type="button">Reset</button>
+          </div>
+          <div class="scenario-grid">
+            <button class="scenario-chip" type="button" data-scenario="salary-hike">
+              <span>Salary Hike</span>
+              <strong>+10%</strong>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="bonus">
+              <span>Bonus</span>
+              <strong>₹2L</strong>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="home-loan">
+              <span>Home Loan EMI</span>
+              <strong>+₹40k/mo</strong>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="parents-insurance">
+              <span>Parents Insurance</span>
+              <strong>+₹25k</strong>
+            </button>
+            <button class="scenario-chip" type="button" data-scenario="child-goal">
+              <span>Child Goal</span>
+              <strong>+₹15k/mo</strong>
+            </button>
+          </div>
+        </article>
+
+        <!-- ========== CHARTS ========== -->
+        <article class="panel glass-card chart-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Comparison</span>
+              <h2>Old vs New Regime</h2>
+            </div>
+          </div>
+          <canvas id="taxComparisonChart" aria-label="Tax comparison chart"></canvas>
+        </article>
+
+        <article class="panel glass-card chart-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Monthly plan</span>
+              <h2>Tax-saving SIP split</h2>
+            </div>
+          </div>
+          <canvas id="monthlyPlanChart" aria-label="Monthly allocation chart"></canvas>
+        </article>
+
+        <!-- ========== ALLOCATION CARDS ========== -->
+        <article class="panel glass-card wide-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Recommended allocation</span>
+              <h2>Section-wise plan</h2>
+            </div>
+            <strong id="totalAnnualPlan">₹0/year</strong>
+          </div>
+          <div class="allocation-grid" id="allocationGrid"></div>
+        </article>
+
+        <!-- ========== GUARDRAILS ========== -->
+        <article class="panel accent-card wide-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Guardrails</span>
+              <h2>Monthly cash-flow safety</h2>
+            </div>
+          </div>
+          <div class="guardrail-list" id="guardrailList"></div>
+        </article>
+
+        <!-- ========== INSIGHTS ========== -->
+        <article class="panel glass-card wide-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Plain language</span>
+              <h2>Money OS insights</h2>
+            </div>
+          </div>
+          <div class="insight-list" id="insightList"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

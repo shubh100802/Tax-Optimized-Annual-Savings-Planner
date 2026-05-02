@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money OS | Tax-Optimized Savings Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ========== BACKGROUND DECOR ========== -->
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <header class="site-nav">
+      <a class="brand" href="index.html" aria-label="Money OS home">
+        <span class="brand-mark">₹</span>
+        <span>Money OS</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#planner">Planner</a>
+        <a href="#trust">Why it wins</a>
+        <a class="nav-pill" href="dashboard.html">Dashboard</a>
+      </nav>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <main>
+      <section class="hero shell">
+        <div class="hero-copy">
+          <span class="eyebrow">AI-ready tax planning for Indian salaries</span>
+          <h1>Turn tax season into a monthly wealth strategy.</h1>
+          <p>
+            Money OS compare tax regimes, build your ideal 80C / 80D / NPS plan, and protect monthly cash flow.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#planner">Build my plan</a>
+            <a class="button ghost" href="dashboard.html">View saved dashboard</a>
+          </div>
+          <div class="proof-row" id="trust">
+            <div>
+              <strong>Current Tax Rules</strong>
+              <span>Updated slab logic</span>
+            </div>
+            <div>
+              <strong>Cash Stress Meter</strong>
+              <span>Monthly affordability signal</span>
+            </div>
+            <div>
+              <strong>Real-time Planning Engine</strong>
+              <span>Live personalized calculations</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card glass-card">
+          <div class="mini-chart">
+            <span style="height: 54%"></span>
+            <span style="height: 72%"></span>
+            <span style="height: 42%"></span>
+            <span style="height: 88%"></span>
+            <span style="height: 64%"></span>
+          </div>
+          <div class="hero-metric">
+            <span>Signature demo moment</span>
+            <strong>₹38,000+</strong>
+          </div>
+          <p>Compare tax saved, then prove the monthly plan will not choke cash flow.</p>
+        </aside>
+      </section>
+
+      <!-- ========== INPUT FORM ========== -->
+      <section class="planner-section shell" id="planner">
+        <div class="section-heading">
+          <span class="eyebrow">Tax cockpit</span>
+          <h2>Build your optimized savings plan</h2>
+          <p>Enter realistic numbers. We’ll handle comparison, allocation, and guardrails.</p>
+        </div>
+
+        <form class="planner-form glass-card" id="plannerForm" novalidate>
+          <div class="form-grid">
+            <label class="field">
+              <span>Annual Salary</span>
+              <input type="number" name="annualSalary" min="1" placeholder="e.g. 1800000" required />
+            </label>
+
+            <label class="field">
+              <span>Existing 80C Investments</span>
+              <input type="number" name="section80C" min="0" placeholder="e.g. 60000" />
+            </label>
+
+            <label class="field">
+              <span>Existing 80D Premiums</span>
+              <input type="number" name="section80D" min="0" placeholder="e.g. 25000" />
+            </label>
+
+            <label class="field">
+              <span>Existing NPS</span>
+              <input type="number" name="nps" min="0" placeholder="e.g. 12000" />
+            </label>
+
+            <label class="field">
+              <span>Regime Choice</span>
+              <select name="taxRegimeChoice">
+                <option value="auto">Auto Compare</option>
+                <option value="old">Old Regime</option>
+                <option value="new">New Regime</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Financial Goal</span>
+              <select name="financialGoal">
+                <option value="max-tax-savings">Max Tax Savings</option>
+                <option value="balanced-wealth-growth" selected>Balanced Wealth Growth</option>
+                <option value="higher-monthly-cash-flow">Higher Monthly Cash Flow</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Age</span>
+              <input type="number" name="age" min="18" max="100" placeholder="e.g. 32" />
+            </label>
+
+            <label class="field">
+              <span>Monthly Expenses</span>
+              <input type="number" name="monthlyExpenses" min="0" placeholder="e.g. 85000" />
+            </label>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-message" id="formMessage" role="alert"></p>
+            <button class="button primary submit-button" type="submit">
+              <span class="button-label">Generate Money OS Plan</span>
+              <span class="loader" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer shell">
+      <span>Built for smarter tax planning</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

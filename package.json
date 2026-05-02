@@ -1,0 +1,18 @@
+{
+  "name": "money-os-tax-planner",
+  "version": "1.0.0",
+  "description": "Tax-Optimized Annual Savings Planner for Blostem AI Builder Hackathon",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "check": "node --check backend/server.js && node --check backend/taxEngine.js && node --check frontend/script.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
