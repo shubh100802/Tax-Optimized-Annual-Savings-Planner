@@ -270,7 +270,7 @@ This is not a replacement for professional tax advice.
 
 ## 🏷️ Labels
 
-`Fintech` `Tax Planning` `Money OS` `Node.js` `Express` `Vanilla JavaScript` `Chart.js` `Hackathon MVP` `Personal Finance`
+`Fintech` `Tax Planning` `Money OS` `Node.js` `Express` `Vanilla JavaScript` `Chart.js` `MVP` `Personal Finance`
 
 ---
 
