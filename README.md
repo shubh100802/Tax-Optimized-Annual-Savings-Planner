@@ -239,7 +239,6 @@ GET /api/sample-plan
 7. Try the Scenario Simulator
 8. Export the plan brief
 
-For a fast judge walkthrough, open the dashboard and click **Load demo data**.
 
 ---
 
@@ -256,8 +255,6 @@ For a fast judge walkthrough, open the dashboard and click **Load demo data**.
 ---
 
 ## ⚠️ Limitations
-
-Money OS is an MVP focused on hackathon-ready tax planning.
 
 Current scope:
 
@@ -277,13 +274,3 @@ This is not a replacement for professional tax advice.
 
 ---
 
-## ✅ Submission Status
-
-Money OS is ready for hackathon demo submission as a polished MVP with:
-
-- Working backend API
-- Premium responsive frontend
-- Real tax comparison engine
-- Scenario simulation
-- Cash-flow intelligence
-- Plain-language recommendations
