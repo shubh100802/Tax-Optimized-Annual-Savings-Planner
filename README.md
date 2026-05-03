@@ -43,6 +43,12 @@ The result feels like a real fintech planning dashboard, not a spreadsheet.
 
 ---
 
+## 🚀 Live Demo
+
+https://tax-optimized-annual-savings-planner.onrender.com
+
+---
+
 ## ✨ Key Features
 
 ### 🧾 Regime Comparison — Old vs New
@@ -166,11 +172,6 @@ Add final screenshots inside the `assets/` folder before submission.
 
 --- -->
 
-## 🚀 Live Demo
-
-https://tax-optimized-annual-savings-planner.onrender.com
-
----
 
 ## ⚙️ How To Run Locally
 
