@@ -5,7 +5,6 @@
 ![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-API-000000?style=for-the-badge&logo=express&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/Vanilla_JS-Frontend-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Hackathon MVP](https://img.shields.io/badge/Hackathon-Finalist_Ready-8B5CF6?style=for-the-badge)
 
 ---
 
@@ -266,12 +265,6 @@ Current scope:
 - Uses localStorage for demo-friendly state management
 
 This is not a replacement for professional tax advice.
-
----
-
-## 🏷️ Labels
-
-`Fintech` `Tax Planning` `Money OS` `Node.js` `Express` `Vanilla JavaScript` `Chart.js` `MVP` `Personal Finance`
 
 ---
 
